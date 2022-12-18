@@ -1,0 +1,17 @@
+{
+    "name": "artem/isibia-dashboard-messages",
+    "type": "wordpress-plugin",
+    "autoload": {
+        "psr-4": {
+            "IsibiaDashboardMessages\\Core\\": "src/",
+            "IsibiaDashboardMessages\\AdminBarMenu\\": "src/admin/admin-bar-menu/classes/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Artem Anoshin",
+            "email": "artem.anoshin@gmail.com"
+        }
+    ],
+    "require": {}
+}
