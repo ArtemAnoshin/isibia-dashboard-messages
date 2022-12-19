@@ -27,7 +27,7 @@ class AdminBarNode
 //            'target' => '',
 //            'title' => '',
 //            'tabindex' => '',
-            'onclick' => 'console.log(123);return false;',
+//            'onclick' => '',
         ];
     }
 

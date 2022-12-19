@@ -4,7 +4,8 @@
     "autoload": {
         "psr-4": {
             "IsibiaDashboardMessages\\Core\\": "src/",
-            "IsibiaDashboardMessages\\AdminBarMenu\\": "src/admin/admin-bar-menu/classes/"
+            "IsibiaDashboardMessages\\AdminBarMenu\\": "src/admin/admin-bar-menu/classes/",
+            "IsibiaDashboardMessages\\Actions\\": "src/admin/actions/classes/"
         }
     },
     "authors": [
