@@ -12,6 +12,9 @@ class Plugin
     {
         // CSS+JS
         add_action('admin_enqueue_scripts', function () {
+            wp_enqueue_script('jquery-ui-datepicker');
+            wp_enqueue_style('jqueryui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css', false, null );
+            wp_enqueue_editor();
             wp_enqueue_style(
                 'isibia-dashmess-styles',
                 plugins_url('css/style.css', __FILE__)
@@ -19,15 +22,25 @@ class Plugin
             wp_enqueue_script(
                 'isibia-dashmess-script',
                 plugins_url('js/script.js', __FILE__),
-                array('jquery'),
+                array('jquery', 'jquery-ui-datepicker'),
                 self::PLUGIN_VERSION,
                 true);
+            wp_localize_script( 'isibia-dashmess-script', 'isibiaLocalize',
+                array(
+                    'nonce' => wp_create_nonce('isibia-dashmess-nonce')
+                )
+            );
         });
 
         // Admin Bar Menu Hook
         add_action('admin_bar_menu', array('IsibiaDashboardMessages\AdminBarMenu\AdminBarMenuHook', 'hook'), 9999);
     
         // ShowMessageModalAction
-        add_action('wp_ajax_show_message_modal', array('IsibiaDashboardMessages\Actions\ShowMessageModalAction\ShowMessageModalController', 'showModal'));
+        add_action('wp_ajax_show_message_modal', array('IsibiaDashboardMessages\Actions\ShowMessageModalAction', 'showModal'));
+        // SaveMessageAjaxAction
+        add_action('wp_ajax_dashboard_message_save', array('IsibiaDashboardMessages\Actions\SaveMessageAjaxAction', 'save'));
+
+        // Register custom post type
+        add_action('init', array('IsibiaDashboardMessages\Models\RegisterPostType', 'register'));
     }
 }

@@ -5,7 +5,9 @@
         "psr-4": {
             "IsibiaDashboardMessages\\Core\\": "src/",
             "IsibiaDashboardMessages\\AdminBarMenu\\": "src/admin/admin-bar-menu/classes/",
-            "IsibiaDashboardMessages\\Actions\\": "src/admin/actions/classes/"
+            "IsibiaDashboardMessages\\Actions\\": "src/admin/actions/classes/",
+            "IsibiaDashboardMessages\\Templates\\": "src/admin/templates/classes/",
+            "IsibiaDashboardMessages\\Models\\": "src/admin/models/classes/"
         }
     },
     "authors": [
