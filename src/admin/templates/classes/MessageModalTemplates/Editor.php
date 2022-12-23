@@ -8,7 +8,7 @@ class Editor
     {
         return '
             <div class="isibia-modal-editor">
-                <textarea name="content" id="message-modal-editor" cols="30" rows="20"></textarea>
+                <textarea class="wp-editor-area" name="content" id="message-modal-editor" cols="30" rows="20">Message</textarea>
             </div>
             <script>
                 wp.editor.initialize(\'message-modal-editor\', {

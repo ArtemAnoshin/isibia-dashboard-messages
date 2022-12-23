@@ -25,7 +25,7 @@ class Settings
                 <div class="column">
                     <label>
                         ' . $title_closed . '
-                        <input name="closed" type="checkbox" checked>
+                        <input name="closed" type="checkbox" checked value="1">
                     </label>
                 </div>
             </div>

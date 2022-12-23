@@ -27,12 +27,20 @@ jQuery(document).ready(function ($)
     $(document).on('click', '#isibia-button-modal-save', function (event)
     {
         event.preventDefault();
+        
+        let form = $('#isibia-message-modal');
+        
+        // Copy content from editor to textarea
+        form.find('[name="content"]').val(
+            $('#message-modal-editor_ifr').contents().find('[data-id="message-modal-editor"]').html()
+        );
 
         $.post({
             url: ajaxurl,
             data: {
                 action: 'dashboard_message_save',
-                nonce_code : isibiaLocalize.nonce
+                nonce_code : isibiaLocalize.nonce,
+                form: form.serializeArray()
             },
             success: function (response) {
                 alert(response);

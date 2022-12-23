@@ -8,14 +8,14 @@ class MainTemplate
     public function render()
     {
         ?>
-        <div id="isibia-message-modal" class="isibia-modal">
+        <form id="isibia-message-modal" class="isibia-modal" method="post">
             <?php 
                 echo Header::getTemplate();
                 echo Settings::getTemplate();
                 echo Editor::getTemplate();
                 echo Footer::getTemplate();
             ?>
-        </div>
+        </form>
         <?php
     }
 }
