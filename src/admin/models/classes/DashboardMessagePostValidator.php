@@ -26,7 +26,7 @@ class DashboardMessagePostValidator
     public function validateDate($date, $format = 'd/m/Y'): bool
     {
         $d = DateTime::createFromFormat($format, $date);
-        return $d && $d->format($format) == $date;
+        return $d && $d->format($format) === $date;
     }
     
     /**
@@ -34,6 +34,9 @@ class DashboardMessagePostValidator
      */
     public function validate() : DashboardMessagePostValidator
     {
+        if (!isset($this->title) || empty($this->title)) {
+            throw new Exception(__('Message title required.', 'isibia-dashboard-messages'));
+        }
         if (!empty($this->start_date) && !$this->validateDate($this->start_date)) {
             throw new Exception(__('No valid date format.', 'isibia-dashboard-messages'));
         }

@@ -43,7 +43,7 @@ jQuery(document).ready(function ($)
                 form: form.serializeArray()
             },
             success: function (response) {
-                alert(response);
+                console.log(response);
             }
         });
     })

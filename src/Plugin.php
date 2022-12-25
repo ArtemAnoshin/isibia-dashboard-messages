@@ -2,6 +2,8 @@
 
 namespace IsibiaDashboardMessages\Core;
 
+use IsibiaDashboardMessages\Models\RegisterPostType;
+
 class Plugin
 {
     const PLUGIN_VERSION = '1.0';
@@ -42,5 +44,11 @@ class Plugin
 
         // Register custom post type
         add_action('init', array('IsibiaDashboardMessages\Models\RegisterPostType', 'register'));
+
+        // Add metaboxes
+        add_action('add_meta_boxes', array('IsibiaDashboardMessages\Models\RegisterMetaBoxes', 'register'));
+
+        // Save post
+        add_action('save_post_' . RegisterPostType::MESSAGES_POST_TYPE, array('IsibiaDashboardMessages\Models\DashboardMessagePost', 'update'));
     }
 }

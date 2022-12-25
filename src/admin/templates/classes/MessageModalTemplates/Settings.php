@@ -6,12 +6,19 @@ class Settings
 {
     public static function getTemplate(): string
     {
+        $title_message = __('Message title', 'isibia-dashboard-messages');
         $title_start_date = __('Start date', 'isibia-dashboard-messages');
         $title_end_date = __('End date', 'isibia-dashboard-messages');
         $title_closed = __('Can close', 'isibia-dashboard-messages');
         
         return '
             <div class="isibia-modal-settings">
+                <div class="column">
+                    <label>
+                        ' . $title_message . '
+                        <input name="title" type="text" size="30">
+                    </label>
+                </div>
                 <div class="column">
                     <label>
                         ' . $title_start_date . '

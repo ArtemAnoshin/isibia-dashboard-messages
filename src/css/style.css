@@ -53,3 +53,9 @@
 .isibia-modal-footer button:first-child {
     margin-right: 10px;
 }
+#isibia-dashmess-settings .row {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
