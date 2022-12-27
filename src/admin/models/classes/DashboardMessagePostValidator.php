@@ -23,7 +23,7 @@ class DashboardMessagePostValidator
         }
     }
 
-    public function validateDate($date, $format = 'd/m/Y'): bool
+    public function validateDate($date, $format = 'Y-m-d'): bool
     {
         $d = DateTime::createFromFormat($format, $date);
         return $d && $d->format($format) === $date;

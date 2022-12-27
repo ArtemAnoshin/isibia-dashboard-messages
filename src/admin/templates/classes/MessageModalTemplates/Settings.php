@@ -37,7 +37,7 @@ class Settings
                 </div>
             </div>
             <script>
-                jQuery("input[name*=\'date\'], .datepicker").datepicker({ dateFormat: "dd/mm/yy" });
+                jQuery("input[name*=\'date\'], .datepicker").datepicker({ dateFormat: "yy-mm-dd" });
             </script>
         ';
     }

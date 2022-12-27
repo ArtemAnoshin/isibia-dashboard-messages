@@ -2,6 +2,8 @@
 
 namespace IsibiaDashboardMessages\Models;
 
+use WP_Query;
+
 class DashboardMessagePost
 {
     private $title;
@@ -60,5 +62,43 @@ class DashboardMessagePost
         update_post_meta($post_id, 'start_date', $start_date);
         update_post_meta($post_id, 'end_date', $end_date);
         update_post_meta($post_id, 'closed', $closed);
+    }
+
+    public static function getPosts()
+    {
+        $current_date = date('Y-m-d');
+        $query = new WP_Query([
+            'post_type' => RegisterPostType::MESSAGES_POST_TYPE,
+            'meta_query' => array(
+                array(
+                    'relation' => 'OR',
+                    array(
+                        'key'     => 'start_date',
+                        'value'   => $current_date,
+                        'compare' => '<=',
+                        'type'    => 'DATE'
+                    ),
+                    array(
+                        'key'     => 'start_date',
+                        'value'   => '',
+                    ),
+                ),
+                array(
+                    'relation' => 'OR',
+                    array(
+                        'key'     => 'end_date',
+                        'value'   => $current_date,
+                        'compare' => '>=',
+                        'type'    => 'DATE'
+                    ),
+                    array(
+                        'key'     => 'end_date',
+                        'value'   => '',
+                    ),
+                ),
+            ),
+        ]);
+
+        return $query->get_posts();
     }
 }

@@ -59,3 +59,9 @@
     align-items: center;
     justify-content: space-between;
 }
+.isibia-message {
+    padding: 15px;
+}
+.isibia-message h3 {
+    margin: 0 0 15px;
+}

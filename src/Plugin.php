@@ -50,5 +50,8 @@ class Plugin
 
         // Save post
         add_action('save_post_' . RegisterPostType::MESSAGES_POST_TYPE, array('IsibiaDashboardMessages\Models\DashboardMessagePost', 'update'));
+
+        // Show messages
+        add_action('admin_notices', array('IsibiaDashboardMessages\Actions\ShowMessagesAction', 'show'));
     }
 }
