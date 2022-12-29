@@ -53,5 +53,8 @@ class Plugin
 
         // Show messages
         add_action('admin_notices', array('IsibiaDashboardMessages\Actions\ShowMessagesAction', 'show'));
+
+        // Close message
+        add_action('wp_ajax_isibia_close_message', array('IsibiaDashboardMessages\Models\DashboardMessagePost', 'close'));
     }
 }

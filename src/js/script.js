@@ -43,8 +43,33 @@ jQuery(document).ready(function ($)
                 form: form.serializeArray()
             },
             success: function (response) {
-                console.log(response);
+                if (response.success === true) {
+                    $('#isibia-message-modal').remove();
+                    wp.editor.remove('message-modal-editor');
+                    alert('Saved');
+                } else {
+                    alert(response.data.error);
+                }
             }
         });
     })
+
+    // Close message
+    $('.isibia-message .notice-dismiss').click(function (event)
+    {
+        event.preventDefault();
+
+        const message_id = $(this).closest('.isibia-message').data('id');
+        $.post({
+            url: ajaxurl,
+            data: {
+                action: 'isibia_close_message',
+                nonce_code : isibiaLocalize.nonce,
+                message_id
+            },
+            success: function (response) {
+                console.log(response);
+            }
+        });
+    });
 });

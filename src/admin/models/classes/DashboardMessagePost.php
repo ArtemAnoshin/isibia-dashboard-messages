@@ -67,6 +67,8 @@ class DashboardMessagePost
     public static function getPosts()
     {
         $current_date = date('Y-m-d');
+        $current_user_id = get_current_user_id();
+        $messages_closed = get_user_meta($current_user_id, 'isibia_messages_closed', true);
         $query = new WP_Query([
             'post_type' => RegisterPostType::MESSAGES_POST_TYPE,
             'meta_query' => array(
@@ -96,9 +98,46 @@ class DashboardMessagePost
                         'value'   => '',
                     ),
                 ),
+                array(
+                    'relation' => 'OR',
+                    array(
+                        'key'     => 'end_date',
+                        'value'   => $current_date,
+                        'compare' => '>=',
+                        'type'    => 'DATE'
+                    ),
+                    array(
+                        'key'     => 'end_date',
+                        'value'   => '',
+                    ),
+                ),
             ),
         ]);
 
-        return $query->get_posts();
+        $messages = $query->get_posts();
+
+        if ($messages && is_array($messages_closed)) {
+            foreach ($messages as $key => $message) {
+                if (in_array($message->ID, $messages_closed, true)) {
+                    unset($messages[$key]);
+                }
+            }
+        }
+        return $messages;
+    }
+
+    public static function close()
+    {
+        check_ajax_referer( 'isibia-dashmess-nonce', 'nonce_code' );
+
+        $current_user_id = get_current_user_id();
+        $messages_closed = get_user_meta($current_user_id, 'isibia_messages_closed', true);
+        if (!$messages_closed) {
+            $messages_closed = [];
+        }
+        $messages_closed[] = (int)$_POST['message_id'];
+
+        update_user_meta($current_user_id, 'isibia_messages_closed', $messages_closed);
+        wp_send_json_success();
     }
 }
