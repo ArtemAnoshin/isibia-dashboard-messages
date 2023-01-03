@@ -72,4 +72,7 @@ jQuery(document).ready(function ($)
             }
         });
     });
+    
+    // Datepicker start
+    jQuery("input[name*=\'date\'], .datepicker").datepicker({ dateFormat: "yy-mm-dd" });
 });

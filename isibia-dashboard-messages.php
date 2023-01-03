@@ -1,7 +1,8 @@
 <?php
 /*
   Plugin Name: Isibia Dashboard Messages
-  Description: Free Isibia plugin.
+  Plugin URI: https://github.com/ArtemAnoshin/isibia-dashboard-messages
+  Description: Free Isibia plugin. Create messages for control panel users.
   Version: 1.0
   Author: Artem Anoshin <artem.anoshin@gmail.com>
   Text Domain: isibia-dashboard-messages

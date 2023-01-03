@@ -15,7 +15,10 @@ class Plugin
         // CSS+JS
         add_action('admin_enqueue_scripts', function () {
             wp_enqueue_script('jquery-ui-datepicker');
-            wp_enqueue_style('jqueryui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css', false, null );
+            wp_enqueue_style(
+                'jqueryui',
+                plugins_url('css/jquery-ui.min.css', __FILE__)
+            );
             wp_enqueue_editor();
             wp_enqueue_style(
                 'isibia-dashmess-styles',

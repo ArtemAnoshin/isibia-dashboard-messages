@@ -15,23 +15,23 @@ class Settings
             <div class="isibia-modal-settings">
                 <div class="column">
                     <label>
-                        ' . $title_message . '
+                        ' . esc_html($title_message) . '
                         <input name="title" type="text" size="30">
                     </label>
                 </div>
                 <div class="column">
                     <label>
-                        ' . $title_start_date . '
+                        ' . esc_html($title_start_date) . '
                         <input class="datepicker" name="start_date" type="text">
                     </label>
                     <label>
-                        ' . $title_end_date . '
+                        ' . esc_html($title_end_date) . '
                         <input class="datepicker" name="end_date" type="text">
                     </label>
                 </div>
                 <div class="column">
                     <label>
-                        ' . $title_closed . '
+                        ' . esc_html($title_closed) . '
                         <input name="closed" type="checkbox" checked value="1">
                     </label>
                 </div>

@@ -26,16 +26,16 @@ class RegisterMetaBoxes
 
         ?>
         <div class="row">
-            <label for="isibia-start-date"><?php echo __("Start date", 'isibia-dashboard-messages' ); ?></label>
-            <input type="text" id="isibia-start-date" class="datepicker" name="start_date" value="<?php echo $start_date; ?>" size="25" />
+            <label for="isibia-start-date"><?php echo esc_html__("Start date", 'isibia-dashboard-messages' ); ?></label>
+            <input type="text" id="isibia-start-date" class="datepicker" name="start_date" value="<?php echo esc_attr($start_date); ?>" size="25" />
         </div>
         <div class="row">
-            <label for="isibia-end-date"><?php echo __("End date", 'isibia-dashboard-messages' ); ?></label>
-            <input type="text" id="isibia-end-date" class="datepicker" name="end_date" value="<?php echo $end_date; ?>" size="25" />
+            <label for="isibia-end-date"><?php echo esc_html__("End date", 'isibia-dashboard-messages' ); ?></label>
+            <input type="text" id="isibia-end-date" class="datepicker" name="end_date" value="<?php echo esc_attr($end_date); ?>" size="25" />
         </div>
         <div class="row">
-            <label for="isibia-closed"><?php echo __("Can close", 'isibia-dashboard-messages' ); ?></label>
-            <input type="checkbox" id="isibia-closed" name="closed" <?php echo $closed; ?> size="25" />
+            <label for="isibia-closed"><?php echo esc_html__("Can close", 'isibia-dashboard-messages' ); ?></label>
+            <input type="checkbox" id="isibia-closed" name="closed" <?php echo esc_attr($closed); ?> size="25" />
         </div>
         <?php
     }
